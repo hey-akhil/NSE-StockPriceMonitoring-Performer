@@ -1,0 +1,289 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SPM_ExtractDetailsAndCalculations" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property Name="io_dt_StockDataValue" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_ApplicationBrowserScope" Type="InArgument(ui:UiElement)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1233,1505</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SPM_ExtractDetailsAndCalculations_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Sequence_DataExtract from NSE India." sap:VirtualizedContainerService.HintSize="1203,1440" sap2010:WorkflowViewState.IdRef="Sequence_8">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="ValidateElement" />
+      <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_StocksData" />
+      <Variable x:TypeArguments="x:String" Default="[in_TransactionItem.SpecificContent(&quot;SYMBOL Url&quot;).ToString]" Name="StockURL" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: *Share Price Today, Stock Price, Live NSE News, Quotes, Tips – NSE India" sap:VirtualizedContainerService.HintSize="1141,1352" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InUiElement="[in_ApplicationBrowserScope]" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="732295b0-5af6-4fcf-8cad-166c7b6a4687" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1107,1192" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Double" Name="PriceChange" />
+              <Variable x:TypeArguments="x:Double" Name="PriceRange" />
+              <Variable x:TypeArguments="x:Double" Name="PriceRangePercentage" />
+              <Variable x:TypeArguments="x:Double" Name="PriceChangePercentage" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGoToUrl DisplayName="Go To Stock URL " sap:VirtualizedContainerService.HintSize="1045,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_TransactionItem.SpecificContent(&quot;SYMBOL Url&quot;).ToString]" Version="V3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NGoToUrl>
+            <uix:NCheckState DisplayName="Check App State: Check Correct page was opened or not" sap:VirtualizedContainerService.HintSize="1045,988" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="732295b0-5af6-4fcf-8cad-166c7b6a4687" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="541,746" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dt_StocksData]" DelayBefore="[Convert.ToInt32(in_Config(&quot;DelayBefore&quot;))]" DisplayName="Extract Table Data- Extract all Stocks Value from NSE India page" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='PREV. CLOSE' ReferenceIdx='0' Name='PREV. CLOSE'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='OPEN' ReferenceIdx='1' Name='OPEN'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='HIGH' ReferenceIdx='2' Name='HIGH'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='LOW' ReferenceIdx='3' Name='LOW'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='CLOSE*' ReferenceIdx='4' Name='CLOSE*'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='VWAP' ReferenceIdx='5' Name='VWAP'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='ADJUSTED PRICE *' ReferenceIdx='6' Name='ADJUSTED PRICE *'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='PREV. CLOSE' attr='fulltext' /&gt;&lt;column name='OPEN' attr='fulltext' /&gt;&lt;column name='HIGH' attr='fulltext' /&gt;&lt;column name='LOW' attr='fulltext' /&gt;&lt;column name='CLOSE*' attr='fulltext' /&gt;&lt;column name='VWAP' attr='fulltext' /&gt;&lt;column name='ADJUSTED PRICE *' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="479,189" sap2010:WorkflowViewState.IdRef="NExtractData_4" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="732295b0-5af6-4fcf-8cad-166c7b6a4687" Version="V2">
+                    <uix:NExtractData.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.nseindia.com/get-quotes/equity?symbol=M%26M" DesignTimeRectangle="565, 411, 960, 57" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl id='priceInfoTable' tag='TABLE' /&gt;" Guid="b671dca1-2fab-47ee-a337-b0436d50fad3" InformativeScreenshot="e7cccee67b7dcb39f3c54c5ff2bc374c.png" ScopeSelectorArgument="[string.Format(&quot;&lt;html app='chrome.exe' title='* Share Price Today, Stock Price, Live NSE News, Quotes, Tips – NSE India' url='{0}' /&gt;&quot;, StockURL)]" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                    </uix:NExtractData.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NExtractData>
+                  <ui:MultipleAssign DisplayName="Multiple Assign - assining calculated values to variable" sap:VirtualizedContainerService.HintSize="479,241" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                    <ui:MultipleAssign.AssignOperations>
+                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Double">[PriceChange]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Double">[Math.Round(Convert.ToDouble(in_TransactionItem.SpecificContent("LTP").ToString()) - Convert.ToDouble(dt_StocksData(0).Item("PREV. CLOSE").ToString()),3)]</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Double">[PriceRange]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Double">[Math.Round(Convert.ToDouble(dt_StocksData(0).Item("HIGH").ToString()) - Convert.ToDouble(dt_StocksData(0).Item("LOW").ToString()),2)]</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Double">[PriceRangePercentage]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Double">[Math.Round((PriceRange / Convert.ToDouble(in_TransactionItem.SpecificContent("LTP").ToString) * 100), 2)]</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Double">[PriceChangePercentage]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Double">[Math.Round(Convert.ToDouble(in_TransactionItem.SpecificContent("%CHNG").ToString), 2)]</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                      </scg:List>
+                    </ui:MultipleAssign.AssignOperations>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:MultipleAssign>
+                  <ui:LogMessage DisplayName="Log Message for calculating data successfully" sap:VirtualizedContainerService.HintSize="479,57" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Data Calculation has been successfully&quot;]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Store Data in SPM-Excel data." DisplayName="SPM_AddDataRowtoDT.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="479,169" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SPM\SPM_AddDataRowtoDT.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="s:Object[]" x:Key="in_RowArray" xml:space="preserve">[new Object() { in_TransactionItem.SpecificContent("SYMBOL").ToString,in_TransactionItem.SpecificContent("LTP").ToString, dt_StocksData(0).Item("PREV. CLOSE").ToString, dt_StocksData(0).Item("OPEN").ToString, dt_StocksData(0).Item("HIGH").ToString, dt_StocksData(0).Item("LOW").ToString, dt_StocksData(0).Item("CLOSE*").ToString, dt_StocksData(0).Item("VWAP").ToString,  dt_StocksData(0).Item("ADJUSTED PRICE *").ToString, PriceChange, PriceRange, PriceRangePercentage, PriceChangePercentage}]</InArgument>
+                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Input">[io_dt_StockDataValue]</InOutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_ColumnToSearch">Stock Name</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_ValueToSearch">[in_TransactionItem.SpecificContent("SYMBOL").ToString]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:InvokeWorkflowFile>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw Exception if correct page was not appear" Exception="[new SystemException (&quot;Correct page was not loaded&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.nseindia.com/get-quotes/equity?symbol=ONGC" DesignTimeRectangle="545, 351, 1000, 58" DesignTimeScaleFactor="1" FriendlyName="'Prev. Close Open'" FullSelectorArgument="&lt;webctrl class='priceinfo-rightbox' tag='ASIDE' /&gt;" FuzzySelectorArgument="&lt;webctrl class='priceinfo-rightbox' tag='ASIDE' type='' aaname='*' /&gt;" Guid="3b6df720-0858-4a2f-b90a-e73541751dbe" InformativeScreenshot="4eb10812212b2bf094f33efedb16990b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Oil &amp;amp; Natural Gas Corporation Limited Share Price Today, Stock Price, Live NSE News, Quotes, Tips – NSE India' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="82a3ff9b6387aabc9fa3b26e1ae390fc.jpg" Selector="[string.Format(&quot;&lt;html app='chrome.exe' url='https://www.nseindia.com/{0} ' /&gt;&quot;, StockURL)]" Title="M&amp;M Share Price Today, Stock Price, Live NSE News, Quotes, Tips – NSE India" Url="[in_Config(&quot;WebsiteURL&quot;).ToString]" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
